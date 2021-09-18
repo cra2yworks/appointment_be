@@ -1,0 +1,34 @@
+### Ping
+GET http://localhost:4000/
+
+
+### Get All appointments
+GET http://localhost:4000/appointment/
+
+### Get appointment by ID
+GET http://localhost:4000/appointment/6145fa774ac2a772ea7d8d2c
+
+### Add Appointment 
+### Dateformat = "YYYY-MM-DD HH:mm:ss"
+POST  http://localhost:4000/appointment/new
+Content-Type: application/json
+
+{
+    "name": "Tester",
+    "title": "Test appointment",
+    "fromDate": "2021-09-20 12:30:00",
+    "toDate": "2021-09-20 13:30:00"
+}
+
+### Update Appointment
+POST  http://localhost:4000/appointment/update
+Content-Type: application/json
+
+{
+    "id": "6146041c7fef8cc073b1358d",
+    "fromDate": "2021-09-20 12:30:00",
+    "toDate": "2021-09-20 15:30:00"
+}
+
+### Delete Appointment
+DELETE  http://localhost:4000/appointment/614603e77fef8cc073b13584
