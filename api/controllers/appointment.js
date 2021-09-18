@@ -137,10 +137,19 @@ exports.insertCheck = async (req, res, next) => {
         }
          
         //advance booking Check
-        const ADVMINDAYS = 2;
+        const ADVMINBDAYS = 2;
         const ADVMAXDAYS = 21; //3 weeks
-        let advMinDate = moment().startOf("day").add(ADVMINDAYS, 'days');
+
+        // let advMinDate = moment().startOf("day").add(ADVMINDAYS, 'days');
         let advMaxDate = moment().endOf("day").add(ADVMAXDAYS, 'days');
+        let advMinDate = moment().startOf("day");
+        let businessDayCount = 0;
+        while(businessDayCount < ADVMINBDAYS){ //Add business days
+            if(checkWeekDays(advMinDate)){
+                businessDayCount++;
+            }
+            advMinDate = advMinDate.add(1, 'days');
+        }
         const advBookingCheck = date => moment(date).isBetween(advMinDate, advMaxDate, null, "[]");
         if( !advBookingCheck(fromDate) ){
             throw new Error(`Fail Advance Booking check. ${advMinDate.format("YYYY-MM-DD")} - ${advMaxDate.format("YYYY-MM-DD")}`);
