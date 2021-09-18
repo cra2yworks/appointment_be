@@ -26,9 +26,10 @@ Content-Type: application/json
 
 {
     "id": "6146041c7fef8cc073b1358d",
+    "title": "Testing 2",
     "fromDate": "2021-09-20 12:30:00",
     "toDate": "2021-09-20 15:30:00"
 }
 
-### Delete Appointment
+### Delete Appointment by ID
 DELETE  http://localhost:4000/appointment/614603e77fef8cc073b13584
